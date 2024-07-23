@@ -1,0 +1,34 @@
+Based on the format of the content provided, it appears to be a configuration file written in YAML format.
+
+To upgrade the configuration to be compatible with Java 17, we will convert the content to Java code by utilizing the "YamlPropertiesFactoryBean" class from the Spring Framework. We will also update the Spring properties to match the Java naming conventions.
+
+Here is the modified code in Java 17:
+
+```java
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import org.springframework.core.io.ClassPathResource;
+
+import java.util.Properties;
+
+public class DepartmentServiceConfig {
+    public static void main(String[] args) {
+        var factory = new YamlPropertiesFactoryBean();
+        factory.setResources(new ClassPathResource("application.yml"));
+        Properties properties = factory.getObject();
+
+        // Retrieve the property values and perform any necessary operations
+        String serverPort = properties.getProperty("server.port");
+        String springApplicationName = properties.getProperty("spring.application.name");
+        String zipkinBaseUri = properties.getProperty("spring.zipkin.base-uri");
+
+        // Print the values (or do any other processing)
+        System.out.println("Server Port: " + serverPort);
+        System.out.println("Spring Application Name: " + springApplicationName);
+        System.out.println("Zipkin Base URI: " + zipkinBaseUri);
+    }
+}
+```
+
+NOTE: Before running the code, you will need to add the necessary dependencies for Spring Framework and YAML support in your project.
+
+If you have any other files that need to be upgraded, please provide them, and I'll be happy to assist you further.
